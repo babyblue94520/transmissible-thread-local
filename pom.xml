@@ -32,6 +32,13 @@
         </developer>
     </developers>
 
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>https://github.com/babyblue94520/transmissible-thread-local/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
