@@ -5,15 +5,32 @@
 
     <groupId>io.github.babyblue94520</groupId>
     <artifactId>transmissible-thread-local</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
     <name>transmissible-thread-local</name>
     <description>Transmissible ThreadLocal</description>
     <packaging>jar</packaging>
     <url>https://github.com/babyblue94520/transmissible-thread-local</url>
 
+    <scm>
+        <connection>https://github.com/babyblue94520/transmissible-thread-local.git</connection>
+        <url>https://github.com/babyblue94520/transmissible-thread-local.git</url>
+    </scm>
+
     <properties>
         <java.version>9</java.version>
     </properties>
+
+    <developers>
+        <developer>
+            <name>Clare Wu</name>
+            <id>babyblue94520</id>
+            <email>babyblue94520@gmail.com</email>
+            <timezone>+8</timezone>
+            <roles>
+                <role>Java Developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
@@ -62,4 +79,52 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <additionalJOption>-Xdoclint:none</additionalJOption>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
