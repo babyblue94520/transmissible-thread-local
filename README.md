@@ -7,7 +7,7 @@
 
 所以我們需要為每一位使用者分配獨立的 `Thread` 和 `Queue` 來處理請求，公平的使用 `Server` 的資源，為了達到該目的，傳統`同步`的請求，則需要改為`非同步`的請求，此時原本是用到`ThreadLocal`和`InheritableThreadLocal`暫存的資料則會消失，因此我們需要一個能不斷傳遞當前`Thread`暫存的資料給下一個`Thread`，所以設計了`TransmissibleThreadLocal`。
 
-其實阿里巴巴已經有設計 [TransmittableThreadLocal](https://github.com/alibaba/transmittable-thread-local) 來處理資料傳遞的問題，但實現原理不適特別難，所以就手動自己來一個了。
+其實阿里巴巴已經有設計 [TransmittableThreadLocal](https://github.com/alibaba/transmittable-thread-local) 來處理資料傳遞的問題，但實現原理不是特別難，所以就手動自己來一個了。
 
 ## QuickStart
 
